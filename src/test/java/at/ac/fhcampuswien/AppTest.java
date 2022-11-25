@@ -259,10 +259,10 @@ class AppTest {
     public void isAnagramNote() {
         try {
             Method m = Lecturer.class.getMethod("isAnagramNote", Lecturer.class);
-            Constructor<?> co = Person.class.getConstructor(String.class, int.class, String.class);
+            Constructor<?> co = Lecturer.class.getConstructor(String.class, int.class, String.class);
             Lecturer l1 = (Lecturer) co.newInstance("Michael Strommer", 343423323, "The Millenium Falcon");
-            Lecturer l2 = (Lecturer) co.newInstance("Leon Freudenthaler", 21122323, 0, "Me hell I malfunction");
-            Lecturer l3 = (Lecturer) co.newInstance("Stefan Schmitzhofer", 642327885, 0, "Fulfill your destiny!");
+            Lecturer l2 = (Lecturer) co.newInstance("Leon Freudenthaler", 21122323, "Me hell I malfunction");
+            Lecturer l3 = (Lecturer) co.newInstance("Stefan Schmitzhofer", 642327885, "Fulfill your destiny!");
             assertTrue((boolean)m.invoke(l1, l2), "Actually an anagram.");
             assertFalse((boolean)m.invoke(l1, l3), "Actually not an anagram.");
         } catch (NoSuchMethodException nsme){
