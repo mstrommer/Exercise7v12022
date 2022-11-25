@@ -10,23 +10,31 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 }
 
 test {
     useJUnitPlatform()
 }
 
+//noinspection GroovyAssignabilityCheck
 run {
     standardInput(System.in)
 }
 
-mainClassName = 'at.ac.fhcampuswien.App'
+mainClassName = 'at.ac.fhcampuswien.tictactoe.App'
 
 allprojects {
     tasks.withType(JavaCompile) {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+tasks.withType(Test) {
+    systemProperty "file.encoding", "UTF-8"
 }
