@@ -241,113 +241,36 @@ class AppTest {
     }
 
     @Test
-    @SuppressWarnings("unchecked")
-    public void copyFromArrayToCollection() {
+    public void isPalindrome() {
         try {
-            // Generics Checkings
-            Method m = App.class.getMethod("copyFromArrayToCollection", Object[].class, Collection.class);
-            boolean test = false;
-            test = m.getGenericParameterTypes()[0].getTypeName().equals("T[]");
-            assertTrue(test,"Please check your Generic Parameter Types.");
-            test = m.getGenericParameterTypes()[1].getTypeName().equals("java.util.Collection<T>");
-            assertTrue(test,"Please check your Generic Parameter Types.");
-
-            // Prepare Testdata
-            String[] arr = new String[]{"1","2","3","4"};
-
-            List<String> list = new ArrayList<>();
-            m.invoke(null, arr, list);
-
-            // Assertions
-            assertEquals(4, list.size(), "Please check your copyFromArrayToCollection implementation.");
+            Method m = App.class.getMethod("isPalindrome", StringBuilder.class);
+            assertTrue((boolean)m.invoke(null, new StringBuilder("Was it a car or a cat I saw")), "'Was it a car or a cat I saw' is actually a palindrome.");
+            assertFalse((boolean)m.invoke(null, new StringBuilder("Baby Elephant")), "'Baby Elephant' is actually not a palindrome. Of course we wish.");
         } catch (NoSuchMethodException nsme){
             nsme.printStackTrace();
-            fail("There should be a method called copyFromArrayToCollection.");
+            fail("There should be a method called isPalindrome.");
         } catch (Exception e) {
             e.printStackTrace();
-            fail("Some unexpected error has occurred. Please contact moodle support forum ;)");
-        }
-    }
-
-    // Test with correct Types
-    @Test
-    @SuppressWarnings("unchecked")
-    public void copyFromNumbersArrayToCollection1() {
-        try {
-            // Generics Checkings
-            Method m = App.class.getMethod("copyFromNumbersArrayToCollection", Number[].class, Collection.class);
-            boolean test = false;
-            test = m.getGenericParameterTypes()[0].getTypeName().equals("T[]");
-            assertTrue(test,"Please check your Generic Parameter Types.");
-            test = m.getGenericParameterTypes()[1].getTypeName().equals("java.util.Collection<T>");
-            assertTrue(test,"Please check your Generic Parameter Types.");
-
-            // Prepare Testdata
-            Double[] arr = new Double[]{1.0,2.0,3.0,4.0,5.0};
-
-            List<String> list = new ArrayList<>();
-            m.invoke(null, arr, list);
-
-            // Assertions
-            assertEquals(5, list.size(), "Please check your copyFromNumbersArrayToCollection implementation.");
-        } catch (NoSuchMethodException nsme){
-            nsme.printStackTrace();
-            fail("There is a Problem with the definition of method copyFromNumbersArrayToCollection. Hint: Try using extends with the Type Parameter.");
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail("Some unexpected error has occurred. Please contact moodle support forum ;)");
-        }
-    }
-
-    // Test with wrong Types. Just in case.
-    @Test
-    @SuppressWarnings("unchecked")
-    public void copyFromNumbersArrayToCollection2() {
-        try {
-            // Generics Checkings
-            Method m = App.class.getMethod("copyFromNumbersArrayToCollection", Number[].class, Collection.class);
-            boolean test = false;
-            test = m.getGenericParameterTypes()[0].getTypeName().equals("T[]");
-            assertTrue(test,"Please check your Generic Parameter Types.");
-            test = m.getGenericParameterTypes()[1].getTypeName().equals("java.util.Collection<T>");
-            assertTrue(test,"Please check your Generic Parameter Types.");
-
-            // Prepare Testdata
-            String[] arr = new String[]{"1.0","2.0","3.0","4.0","5.0"};
-
-            List<String> list = new ArrayList<>();
-            m.invoke(null, arr, list);
-
-            // Assertions
-            assertEquals(5, list.size(), "Please check your copyFromNumbersArrayToCollection implementation.");
-        } catch (NoSuchMethodException nsme){
-            nsme.printStackTrace();
-            fail("There is a Problem with the definition of method copyFromNumbersArrayToCollection. Hint: Try using extends with the Type Parameter.");
-        } catch (Exception e) {
-            // Nothing to do here. Everything all right.
+            fail("Problems might have occurred creating the Object. Also check return types.");
         }
     }
 
     @Test
-    @SuppressWarnings("unchecked")
-    public void genericSymmetricDifference() {
+    public void isAnagramNote() {
         try {
-            // Generics Checkings
-            Method m = CollectionHelper.class.getMethod("genericSymmetricDifference", Set.class, Set.class);
-            boolean test = false;
-            test = m.getGenericParameterTypes()[0].getTypeName().equals("java.util.Set<? extends T>");
-            assertTrue(test,"Please check your Generic Parameter Types.");
-            test = m.getGenericParameterTypes()[1].getTypeName().equals("java.util.Set<? extends T>");
-            assertTrue(test,"Please check your Generic Parameter Types.");
-            test = m.getGenericReturnType().getTypeName().equals("java.util.Set<T>");
-            assertTrue(test,"Please check your Generic Return Type.");
-            //We cannot check the Type Parameter itself?!
+            Method m = Lecturer.class.getMethod("isAnagramNote", Lecturer.class);
+            Constructor<?> co = Person.class.getConstructor(String.class, int.class, String.class);
+            Lecturer l1 = (Lecturer) co.newInstance("Michael Strommer", 343423323, "The Millenium Falcon");
+            Lecturer l2 = (Lecturer) co.newInstance("Leon Freudenthaler", 21122323, 0, "Me hell I malfunction");
+            Lecturer l3 = (Lecturer) co.newInstance("Stefan Schmitzhofer", 642327885, 0, "Fulfill your destiny!");
+            assertTrue((boolean)m.invoke(l1, l2), "Actually an anagram.");
+            assertFalse((boolean)m.invoke(l1, l3), "Actually not an anagram.");
         } catch (NoSuchMethodException nsme){
             nsme.printStackTrace();
-            fail("There is a Problem with the definition of method genericSymmetricDifference. Hint: Try using extends with the Type Parameter.");
+            fail("There should be a method called isAnagramNote.");
         } catch (Exception e) {
             e.printStackTrace();
-            fail("Some unexpected error has occurred. Please contact moodle support forum ;)");
+            fail("Problems might have occurred creating the Object. Also check return types.");
         }
     }
 
@@ -357,7 +280,7 @@ class AppTest {
         try {
             // Generics Checkings
             Method m = Person.class.getMethod("serializePerson", Person.class, String.class);
-            Person p = new Lecturer("Obi-Wan", 1);
+            Person p = new Lecturer("Obi-Wan", 1, "");
             m.invoke(null, p, "build/resources/main/obiwan.ser");
 
             // Test
@@ -396,14 +319,14 @@ class AppTest {
             FileOutputStream fos = null;
             ObjectOutputStream out = null;
             try {
-                fos = new FileOutputStream("build/resources/main/obiwan.ser");
+                fos = new FileOutputStream("build/resources/main/luke.ser");
                 out = new ObjectOutputStream(fos);
                 out.writeObject(expected);
                 out.close();
             } catch(IOException ex) {
                 fail("There is a Problem with the definition/implementation of method deserializePerson.");
             }
-            actual = (Person) m.invoke(null, "build/resources/main/obiwan.ser");
+            actual = (Person) m.invoke(null, "build/resources/main/luke.ser");
         } catch (NoSuchMethodException nsme){
             nsme.printStackTrace();
             fail("There is a Problem with the definition/implementation of method deserializePerson.");
