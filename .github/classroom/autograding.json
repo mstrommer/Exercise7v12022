@@ -1,0 +1,114 @@
+{
+  "tests": [
+    {
+      "name": "intersection (1 Point) ",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.intersection",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "symmetricDifference1 (1 Point)",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.symmetricDifference1",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "symmetricDifference2 (1 Point)",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.symmetricDifference2",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "listOfStudentsToMap (1 Point)",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.listOfStudentsToMap",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "eraseDuplicatesInList1 (1 Point)",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.eraseDuplicatesInList1",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "eraseDuplicatesInList2 (1 Point)",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.eraseDuplicatesInList2",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "isAnagramNote 2 Points",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.isAnagramNote",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 2
+    },
+    {
+      "name": "isPalindrome 1 Point",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.isPalindrome",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 1
+    },
+    {
+      "name": "serializePerson (2 Points)",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.serializePerson",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 2
+    },
+    {
+      "name": "deserializePerson (2 Points)",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.deserializePerson",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 2
+    },
+    {
+      "name": "fileToList (2 Points)",
+      "setup": "",
+      "run": "gradle test --tests at.ac.fhcampuswien.AppTest.fileToList",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 1,
+      "points": 2
+    }
+  ]
+}
